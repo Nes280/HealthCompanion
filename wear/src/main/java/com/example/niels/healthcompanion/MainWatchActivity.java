@@ -18,6 +18,7 @@ public class MainWatchActivity extends WearableActivity {
     private BoxInsetLayout mContainerView;
     private TextView mTextView;
     private TextView mClockView;
+    //petit test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
