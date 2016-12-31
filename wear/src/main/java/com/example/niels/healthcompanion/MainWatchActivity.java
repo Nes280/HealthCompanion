@@ -13,7 +13,7 @@ import java.util.Locale;
 public class MainWatchActivity extends WearableActivity {
 
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
-            new SimpleDateFormat("HH:mm", Locale.US);
+            new SimpleDateFormat("HH:mm:ss", Locale.FRANCE);
 
     private BoxInsetLayout mContainerView;
     private TextView mTextView;

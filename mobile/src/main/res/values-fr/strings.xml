@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Health Companion</string>
+    <string name="footstep">Pas</string>
+    <string name="pulse">Pouls</string>
+    <string name="emergency_call">Appel durgance</string>
+    <string name="notification">Notification</string>
+    <string name="settings">Parametres</string>
+</resources>

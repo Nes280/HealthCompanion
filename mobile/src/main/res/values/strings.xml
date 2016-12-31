@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Health Companion</string>
+    <string name="footstep">Footstep</string>
+    <string name="pulse">Pulse</string>
+    <string name="emergency_call">Emergency call</string>
+    <string name="notification">Notification</string>
+    <string name="settings">Settings</string>
 </resources>
