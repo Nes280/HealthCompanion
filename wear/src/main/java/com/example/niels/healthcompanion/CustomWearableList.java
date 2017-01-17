@@ -1,17 +1,19 @@
 package com.example.niels.healthcompanion;
 
+/**
+ * Created by niels on 17/01/2017.
+ */
+
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.WearableListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
-public class MainWatchActivity extends WearableActivity {
+public class CustomWearableList extends Activity {
     private static ArrayList<Integer> mIcons;
     private TextView mHeader;
-    private final String[] characters = {"Pas", "Pouls", "Appel d'urgance", "Notification", "Paramètres"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class MainWatchActivity extends WearableActivity {
             new WearableListView.ClickListener() {
                 @Override
                 public void onClick(WearableListView.ViewHolder viewHolder) {
-                    Toast.makeText(MainWatchActivity.this,
+                    Toast.makeText(CustomWearableList.this,
                             String.format("You selected item #%s",
                                     viewHolder.getLayoutPosition()+1),
                             Toast.LENGTH_SHORT).show();
@@ -53,7 +55,7 @@ public class MainWatchActivity extends WearableActivity {
 
                 @Override
                 public void onTopEmptyRegionClick() {
-                    Toast.makeText(MainWatchActivity.this,
+                    Toast.makeText(CustomWearableList.this,
                             "Top empty area tapped", Toast.LENGTH_SHORT).show();
                 }
             };
@@ -86,7 +88,4 @@ public class MainWatchActivity extends WearableActivity {
                     // Placeholder
                 }
             };
-
-
-
 }
