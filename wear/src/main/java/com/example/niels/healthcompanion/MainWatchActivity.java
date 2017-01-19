@@ -1,6 +1,8 @@
 package com.example.niels.healthcompanion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.WearableListView;
 import android.widget.TextView;
@@ -9,9 +11,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainWatchActivity extends WearableActivity {
-    private static ArrayList<Integer> mIcons;
+    private static ArrayList<Pair<Integer, String>> mIcons;
     private TextView mHeader;
-    private final String[] characters = {"Pas", "Pouls", "Appel d'urgance", "Notification", "Paramètres"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +20,12 @@ public class MainWatchActivity extends WearableActivity {
         setContentView(R.layout.activity_main_watch);
 
         // Sample icons for the list
-        mIcons = new ArrayList<Integer>();
-        mIcons.add(R.drawable.ic_action_attach);
-        mIcons.add(R.drawable.ic_action_call);
-        mIcons.add(R.drawable.ic_action_locate);
-        mIcons.add(R.drawable.ic_action_mail);
-        mIcons.add(R.drawable.ic_action_microphone);
-        mIcons.add(R.drawable.ic_action_photo);
-        mIcons.add(R.drawable.ic_action_star);
-        mIcons.add(R.drawable.ic_action_user);
-        mIcons.add(R.drawable.ic_action_video);
-
+        mIcons = new ArrayList<Pair<Integer, String>>();
+        mIcons.add(Pair.create(R.drawable.ic_action_attach, "Pas"));
+        mIcons.add(Pair.create(R.drawable.ic_action_call, "Pouls"));
+        mIcons.add(Pair.create(R.drawable.ic_action_locate, "Appel) d'urgance"));
+        mIcons.add(Pair.create(R.drawable.ic_action_mail, "Notification"));
+        mIcons.add(Pair.create(R.drawable.ic_action_microphone, "Paramètres"));
         // This is our list header
         mHeader = (TextView) findViewById(R.id.header);
 
@@ -45,10 +41,16 @@ public class MainWatchActivity extends WearableActivity {
             new WearableListView.ClickListener() {
                 @Override
                 public void onClick(WearableListView.ViewHolder viewHolder) {
-                    Toast.makeText(MainWatchActivity.this,
+                    /*Toast.makeText(MainWatchActivity.this,
                             String.format("You selected item #%s",
                                     viewHolder.getLayoutPosition()+1),
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_SHORT).show();*/
+                    switch (viewHolder.getLayoutPosition()+1) {
+                        case 2:
+                            Intent intent = new Intent(MainWatchActivity.this, Pouls_Activity.class);
+                            startActivity(intent);
+                        break;
+                    }
                 }
 
                 @Override

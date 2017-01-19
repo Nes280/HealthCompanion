@@ -3,7 +3,7 @@ package com.example.niels.healthcompanion;
 /**
  * Created by niels on 17/01/2017.
  */
-
+/*
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WearableListView;
@@ -88,4 +88,4 @@ public class CustomWearableList extends Activity {
                     // Placeholder
                 }
             };
-}
+}*/
