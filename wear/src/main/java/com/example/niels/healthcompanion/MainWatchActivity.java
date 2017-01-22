@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class MainWatchActivity extends WearableActivity {
     private static ArrayList<Pair<Integer, String>> mIcons;
     private TextView mHeader;
+    private Intent mIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,16 @@ public class MainWatchActivity extends WearableActivity {
                                     viewHolder.getLayoutPosition()+1),
                             Toast.LENGTH_SHORT).show();*/
                     switch (viewHolder.getLayoutPosition()+1) {
+
                         case 2:
-                            Intent intent = new Intent(MainWatchActivity.this, Pouls_Activity.class);
-                            startActivity(intent);
-                        break;
+                            mIntent= new Intent(MainWatchActivity.this, Pouls_Activity.class);
+                            startActivity(mIntent);
+                            break;
+
+                        default:
+                            Toast.makeText(MainWatchActivity.this,
+                                    String.format(getString(R.string.unavailable)),
+                                    Toast.LENGTH_SHORT).show();
                     }
                 }
 
