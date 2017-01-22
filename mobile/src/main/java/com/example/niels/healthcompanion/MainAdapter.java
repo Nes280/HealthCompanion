@@ -1,6 +1,6 @@
 package com.example.niels.healthcompanion;
 
-import android.support.v4.util.Pair;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,16 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by niels on 31/12/2016.
  */
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
-    private List<Pair<String, String>> characters;
+    private ArrayList<Triple> characters;
 
-    MainAdapter(List<Pair<String, String>> characters)
+    MainAdapter(ArrayList characters)
     {
         this.characters = characters;
     }
@@ -36,8 +36,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Pair<String, String> pair = characters.get(position);
-        holder.display(pair);
+        Triple triple = characters.get(position);
+        holder.display(triple);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -45,7 +45,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         private final TextView name;
         private final TextView description;
 
-        private Pair<String, String> currentPair;
+        private Triple currentTriple;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
@@ -56,18 +56,28 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new AlertDialog.Builder(itemView.getContext())
-                            .setTitle(currentPair.first)
-                            .setMessage(currentPair.second)
-                            .show();
+
+                    switch (currentTriple.getTroisieme())
+                    {
+                        case 2:
+                            itemView.getContext().startActivity(new Intent(itemView.getContext(),PoulsActivity.class));
+                         break;
+
+                        default:
+                            new AlertDialog.Builder(itemView.getContext())
+                                    .setTitle(currentTriple.getPremier()+":")
+                                    .setMessage("Unavailable :(")
+                                    .show();
+                         break;
+                    }
                 }
             });
         }
 
-        public void display(Pair<String, String> pair) {
-            currentPair = pair;
-            name.setText(pair.first);
-            description.setText(pair.second);
+        public void display(Triple triple) {
+            currentTriple = triple;
+            name.setText(triple.getPremier());
+            description.setText(triple.getDeuxieme());
         }
 
     }

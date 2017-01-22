@@ -5,4 +5,10 @@
     <string name="emergency_call">Appel durgance</string>
     <string name="notification">Notification</string>
     <string name="settings">Parametres</string>
+    <string name="unavailable">indisponible</string>
+    <string name="footstap_desc">Visualisez le nombre de pas effectuer dans la journée.</string>
+    <string name="pulse_desc">Visualisez la moyenne du pouls et un instantané.</string>
+    <string name="emergency_desc">Paramétrez les numéros à appeler en cas d\'urgeance.</string>
+    <string name="notification_desc">Paramétrez divers rappels</string>
+    <string name="settings_desc">paramétreges générale de l\'application.</string>
 </resources>

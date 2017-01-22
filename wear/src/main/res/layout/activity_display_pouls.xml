@@ -11,19 +11,4 @@
     tools:context=".Pouls_Activity"
     tools:deviceIds="wear">
 
-    <!--TextView
-        android:id="@+id/text_pouls"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="50px"
-        android:textStyle="bold"
-        android:text="@string/puls" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|right"
-        android:id="@+id/mesure_pouls" /!-->
 </android.support.wearable.view.WatchViewStub>
