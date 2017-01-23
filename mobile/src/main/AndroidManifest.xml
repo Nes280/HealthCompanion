@@ -3,6 +3,9 @@
     package="com.example.niels.healthcompanion">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-sdk android:minSdkVersion="18"
+        android:targetSdkVersion="23"
+        />
 
     <application
         android:allowBackup="true"
