@@ -19,7 +19,7 @@
             android:id="@+id/tView_date" />
 
         <TextView
-            android:text="@string/val_pas"
+            android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="50px"

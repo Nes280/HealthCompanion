@@ -48,6 +48,10 @@ public class MainWatchActivity extends WearableActivity {
                             Toast.LENGTH_SHORT).show();*/
                     switch (viewHolder.getLayoutPosition()+1) {
 
+                        case 1:
+                            mIntent= new Intent(MainWatchActivity.this, Pas_Activity.class);
+                            startActivity(mIntent);
+                            break;
                         case 2:
                             mIntent= new Intent(MainWatchActivity.this, Pouls_Activity.class);
                             startActivity(mIntent);

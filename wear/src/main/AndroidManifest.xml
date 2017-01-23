@@ -47,6 +47,12 @@
             android:exported="true"
             android:taskAffinity=""
             android:theme="@android:style/Theme.DeviceDefault.Light"></activity>
+        <activity
+            android:name=".Pas_Activity"
+            android:allowEmbedded="true"
+            android:exported="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.DeviceDefault.Light"></activity>
 
         <receiver
             android:name=".Receiver_pouls"

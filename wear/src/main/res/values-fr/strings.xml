@@ -4,4 +4,6 @@
     <string name="puls">Pouls:</string>
     <string name="unavailable">indisponible :(</string>
     <string name="notification_posted">Notification postée</string>
+    <string name="title">Health Companion</string>
+
 </resources>
