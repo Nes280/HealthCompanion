@@ -16,6 +16,7 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
 
     //UI Elements
     private RelativeLayout mRLayout;
+    private RelativeLayout mCLayout;
     private TextView mTextView;
 
     //Sensor and SensorManager
@@ -38,6 +39,7 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
             public void onLayoutInflated(WatchViewStub stub) {
                 //mCircledImageView = (CircledImageView) stub.findViewById(R.id.circle);
                 mRLayout  = (RelativeLayout) stub.findViewById(R.id.round_layout);
+                mCLayout  = (RelativeLayout) stub.findViewById(R.id.rect_layout);
                 mTextView = (TextView) stub.findViewById(R.id.value);
             }
         });
@@ -73,12 +75,18 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
                 if (pouls < 100)
                 {
                     mRLayout.setBackgroundColor(getResources().getColor(R.color.green));
+                    mCLayout.setBackgroundColor(getResources().getColor(R.color.green));
                 }
                 else if(pouls > 100 && pouls < 120)
                 {
                     mRLayout.setBackgroundColor(getResources().getColor(R.color.orange));
+                    mCLayout.setBackgroundColor(getResources().getColor(R.color.orange));
                 }
-                else mRLayout.setBackgroundColor(getResources().getColor(R.color.red));
+                else
+                {
+                    mRLayout.setBackgroundColor(getResources().getColor(R.color.red));
+                    mCLayout.setBackgroundColor(getResources().getColor(R.color.red));
+                }
                 mTextView.setText("" + (int) event.values[0]);
                 Log.d("SENSOR--->",""+event.values[0]);
             }

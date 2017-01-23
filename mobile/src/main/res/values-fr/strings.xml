@@ -11,4 +11,5 @@
     <string name="emergency_desc">Paramétrez les numéros à appeler en cas d\'urgeance.</string>
     <string name="notification_desc">Paramétrez divers rappels</string>
     <string name="settings_desc">paramétreges générale de l\'application.</string>
+    <string name="notif_send">Vous avez envoyé une notification vide.</string>
 </resources>

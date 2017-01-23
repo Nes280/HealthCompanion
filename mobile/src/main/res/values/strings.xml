@@ -11,4 +11,5 @@
     <string name="emergency_desc">Set the numbers to call when there is an emergency.</string>
     <string name="notification_desc">Set various reminders</string>
     <string name="settings_desc">Settings for the application.</string>
+    <string name="notif_send">You sent an empty notification</string>
 </resources>
