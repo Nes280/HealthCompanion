@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.wearable.view.WatchViewStub
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/watch_view_stub_pas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:orientation="vertical">
+    app:rectLayout="@layout/rect_pas"
+    app:roundLayout="@layout/round_pas"
+    tools:context=".Pas_Activity"
+    tools:deviceIds="wear">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:text="Date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50px"
-            android:id="@+id/tView_date" />
-
-        <TextView
-            android:text=""
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50px"
-            android:id="@+id/tView_val_pas" />
-
-        <TextView
-            android:text="pas/seconde"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50px"
-            android:id="@+id/tView_pas_par_seconde" />
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.wearable.view.WatchViewStub>

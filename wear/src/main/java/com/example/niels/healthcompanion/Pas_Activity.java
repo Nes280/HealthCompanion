@@ -8,7 +8,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.support.wearable.view.WatchViewStub;
+import android.text.Layout;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,25 +31,26 @@ public class Pas_Activity extends Activity implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mStepDetectorSensor;
     private Sensor mStepCounterSensor;
+
+    private RelativeLayout mRectLayout;
+    private RelativeLayout mRoundLayout;
     private TextView textView_pas;
     private TextView textView_date;
     private TextView textView_pas_par_seconde;
 
     private int currentStep = 0;
     private long currentDateStep = 0;
+    private boolean firstTime = true;
 
     private ArrayList<Calendar> dateList;
 
 
     protected void onCreate(Bundle  savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_pas);
-        textView_pas = (TextView) findViewById(R.id.tView_val_pas);
-        textView_date = (TextView) findViewById(R.id.tView_date);
-        textView_pas_par_seconde = (TextView) findViewById(R.id.tView_pas_par_seconde);
+        //setContentView(R.layout.activity_display_pas);
+        setContentView(R.layout.rect_pas);
 
-        mSensorManager      = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-
+        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         if(mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)  != null) {
             mStepCounterSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
             isSensorPresent = true;
@@ -53,9 +58,31 @@ public class Pas_Activity extends Activity implements SensorEventListener {
         else{
             isSensorPresent = false;
         }
+
+        textView_pas = (TextView) findViewById(R.id.tView_val_pas);
+        textView_date = (TextView) findViewById(R.id.tView_date);
+        textView_pas_par_seconde = (TextView) findViewById(R.id.tView_pas_par_seconde);
+
+    //    final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub_pas);
+    //    stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
+    //        @Override
+    //        public void onLayoutInflated(WatchViewStub stub) {
+    //            //mCircledImageView = (CircledImageView) stub.findViewById(R.id.circle);
+    //            mRectLayout  = (RelativeLayout) stub.findViewById(R.id.rect_pas_layout);
+    //            //mRoundLayout  = (RelativeLayout) stub.findViewById(R.id.round_pas_layout);
+    //            textView_pas = (TextView) stub.findViewById(R.id.tView_val_pas);
+    //            textView_date = (TextView) stub.findViewById(R.id.tView_date);
+    //            textView_pas_par_seconde = (TextView) stub.findViewById(R.id.tView_pas_par_seconde);
+    //            if(textView_pas == null)
+    //                Log.i("", "textVie ------------- ->>>>>  NULL ");
+    //            else
+    //                Log.i("", "textVie ------------- ->>>>>  NOT NULL ");
+    //        }
+    //    });
     }
 
     public void onSensorChanged(SensorEvent event) {
+
         Sensor sensor = event.sensor;
         float[] values = event.values;
         int value = -1;
@@ -66,6 +93,7 @@ public class Pas_Activity extends Activity implements SensorEventListener {
         if (values.length > 0) {
             value = (int) values[0];
         }
+        textView_pas.setText("666");
 
         if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
             textView_pas.setText("" + value);
@@ -82,7 +110,12 @@ public class Pas_Activity extends Activity implements SensorEventListener {
                 if((currentDateStep_tmp - currentDateStep) > 0) {
                     nbStepBySecond = (value - currentStep) / (currentDateStep_tmp - currentDateStep);
                     Log.i("------------> step/s : ", nbStepBySecond + " step/s");
-                    textView_pas_par_seconde.setText(nbStepBySecond+"pas/s");
+                    if(firstTime){
+                        textView_pas_par_seconde.setText("0 pas/s");
+                        firstTime=false;
+                    }else {
+                        textView_pas_par_seconde.setText(nbStepBySecond+" pas/s");
+                    }
                     textView_date.setText(date.get(Calendar.DAY_OF_MONTH)+"/"+(date.get(Calendar.MONTH)+1)+"/"+date.get(Calendar.YEAR));
                 }
                 currentStep = value;
@@ -103,7 +136,13 @@ public class Pas_Activity extends Activity implements SensorEventListener {
             mSensorManager.registerListener(this, mStepCounterSensor,  SensorManager.SENSOR_DELAY_FASTEST);
         }
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Unregister the listener
+        if (isSensorPresent)
+            mSensorManager.unregisterListener(this);
+    }
     protected void onStop() {
         super.onStop();
         if(isSensorPresent) {
