@@ -2,6 +2,8 @@ package com.example.niels.healthcompanion;
 
 import android.app.Notification;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -29,6 +31,7 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        final Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         setContentView(R.layout.activity_notification);
         editText = (EditText) findViewById(R.id.editText);
@@ -42,10 +45,12 @@ public class NotificationActivity extends AppCompatActivity {
                 if(toSend.isEmpty())
                     toSend = getString(R.string.notif_send);
                 Notification notification = new NotificationCompat.Builder(getApplication())
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.mipmap.notification_flat)
                         .setContentTitle("HealthCompanion")
                         .setContentText(toSend)
                         .setVibrate(pattern)
+                        .setSound(alarmSound)
+                        .setColor(getResources().getColor(R.color.wallet_holo_blue_light))
                         .setVisibility(0x00000001)
                         .extend(new NotificationCompat.WearableExtender().setHintShowBackgroundOnly(true))
                         .build();
