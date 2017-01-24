@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
-import android.util.Log;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.Date;
  * Created by niels on 24/01/2017.
  */
 
-public class NotificationEventReceiver extends WakefulBroadcastReceiver {
+public class NotificationEventReceiverMedication extends WakefulBroadcastReceiver {
 
     private static final String ACTION_START_NOTIFICATION_SERVICE = "ACTION_START_NOTIFICATION_SERVICE";
     private static final String ACTION_DELETE_NOTIFICATION = "ACTION_DELETE_NOTIFICATION";
@@ -33,11 +32,11 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
         String action = intent.getAction();
         Intent serviceIntent = null;
         if (ACTION_START_NOTIFICATION_SERVICE.equals(action)) {
-            Log.i(getClass().getSimpleName(), "onReceive from alarm, starting notification service");
-            serviceIntent = NotificationIntentService.createIntentStartNotificationService(context);
+            //Log.i(getClass().getSimpleName(), "onReceive from alarm, starting notification service");
+            serviceIntent = NotificationIntentServiceMedication.createIntentStartNotificationService(context);
         } else if (ACTION_DELETE_NOTIFICATION.equals(action)) {
-            Log.i(getClass().getSimpleName(), "onReceive delete notification action, starting notification service to handle delete");
-            serviceIntent = NotificationIntentService.createIntentDeleteNotification(context);
+            //Log.i(getClass().getSimpleName(), "onReceive delete notification action, starting notification service to handle delete");
+            serviceIntent = NotificationIntentServiceMedication.createIntentDeleteNotification(context);
         }
 
         if (serviceIntent != null) {
@@ -53,13 +52,13 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
     }
 
     private static PendingIntent getStartPendingIntent(Context context) {
-        Intent intent = new Intent(context, NotificationEventReceiver.class);
+        Intent intent = new Intent(context, NotificationEventReceiverMedication.class);
         intent.setAction(ACTION_START_NOTIFICATION_SERVICE);
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public static PendingIntent getDeleteIntent(Context context) {
-        Intent intent = new Intent(context, NotificationEventReceiver.class);
+        Intent intent = new Intent(context, NotificationEventReceiverMedication.class);
         intent.setAction(ACTION_DELETE_NOTIFICATION);
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }

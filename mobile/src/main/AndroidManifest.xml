@@ -38,11 +38,11 @@
         <activity android:name=".PoulsActivity" />
         <activity android:name=".NotificationActivity"></activity>
         <service
-            android:name=".NotificationIntentService"
+            android:name=".NotificationIntentServiceWater"
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".NotificationEventReceiver" />
+        <receiver android:name=".NotificationEventReceiverWater" />
     </application>
 
 </manifest>
