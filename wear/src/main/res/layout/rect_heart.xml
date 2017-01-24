@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Pouls_Activity"
     tools:deviceIds="wear_square"
-    android:id="@+id/rect_layout">
+    android:id="@+id/pouls_layout">
 
         <TextView
             android:layout_gravity="center"

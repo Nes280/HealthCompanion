@@ -21,4 +21,20 @@
         android:layout_gravity="center"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:text="test notification" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editInt" />
+
+    <Button
+        android:text="OK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:id="@+id/buttonHeure" />
+
+
 </LinearLayout>

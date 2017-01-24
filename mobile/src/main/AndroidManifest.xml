@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.niels.healthcompanion">
 
-    <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="23" />
 
     <meta-data
         android:name="com.google.android.gms.version"
@@ -13,6 +10,11 @@
     <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -35,6 +37,12 @@
         </activity>
         <activity android:name=".PoulsActivity" />
         <activity android:name=".NotificationActivity"></activity>
+        <service
+            android:name=".NotificationIntentService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".NotificationEventReceiver" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Pouls_Activity"
     tools:deviceIds="wear_round"
-    android:id="@+id/round_layout">
+    android:id="@+id/pouls_layout">
 
 
     <TextView
