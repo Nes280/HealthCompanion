@@ -34,11 +34,11 @@ public class MainWatchActivity extends WearableActivity {
 
         // Sample icons for the list
         mIcons = new ArrayList<Pair<Integer, String>>();
-        mIcons.add(Pair.create(R.drawable.ic_action_attach, "Pas"));
-        mIcons.add(Pair.create(R.drawable.ic_action_call, "Pouls"));
-        mIcons.add(Pair.create(R.drawable.ic_action_locate, "Appel) d'urgance"));
+        mIcons.add(Pair.create(R.drawable.ic_shoe, "Pas"));
+        mIcons.add(Pair.create(R.drawable.ic_cardio, "Pouls"));
+        mIcons.add(Pair.create(R.drawable.ic_action_call, "Appel) d'urgance"));
         mIcons.add(Pair.create(R.drawable.ic_action_mail, "Notification"));
-        mIcons.add(Pair.create(R.drawable.ic_action_microphone, "Paramètres"));
+        mIcons.add(Pair.create(R.drawable.ic_action_overflow, "Paramètres"));
         // This is our list header
         mHeader = (TextView) findViewById(R.id.header);
 
