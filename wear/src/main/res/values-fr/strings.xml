@@ -6,6 +6,6 @@
     <string name="unavailable_sensor">capteur indisponible :(</string>
     <string name="notification_posted">Notification postée</string>
     <string name="title">Health Companion</string>
-    <string name="wait">patientez</string>
+    <string name="wait">patienter</string>
 
 </resources>
