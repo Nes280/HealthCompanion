@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.wearable.view.WatchViewStub;
@@ -40,6 +41,12 @@ public class AideActivity extends Activity {
 
         Log.i("CREATE", "Je suis la et j'attends");
         aide = (TextView) findViewById(R.id.textViewAide);
+
+        String num="xx.xx.xx.xx.xx";
+        SharedPreferences parametre = getSharedPreferences("parametre", MODE_PRIVATE);
+        if(parametre.getString("num_urgence", "") != null || parametre.getString("num_urgence", "") != "")
+            num = parametre.getString("num_urgence", "");
+        aide.setText(num);
 
         // Register the local broadcast receiver
         IntentFilter messageFilter = new IntentFilter(Intent.ACTION_SEND);
