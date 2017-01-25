@@ -68,7 +68,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
                         case 4:
                             itemView.getContext().startActivity(new Intent(itemView.getContext(),NotificationActivity.class));
                             break;
-
+                        case 5:
+                            itemView.getContext().startActivity(new Intent(itemView.getContext(),ParametreActivity.class));
+                            break;
                         default:
                             new AlertDialog.Builder(itemView.getContext())
                                     .setTitle(currentTriple.getPremier()+":")
