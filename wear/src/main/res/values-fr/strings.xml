@@ -7,5 +7,6 @@
     <string name="notification_posted">Notification postée</string>
     <string name="title">Health Companion</string>
     <string name="wait">patienter</string>
+    <string name="demandedaide">Aide en cours</string>
 
 </resources>

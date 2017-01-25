@@ -8,7 +8,8 @@
         android:text="Fiche personnelle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="60px"
+        android:textSize="32sp"
+        android:gravity="center"
         android:id="@+id/textView_txt_titre"
         android:layout_weight="0.11" />
 

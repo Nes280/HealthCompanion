@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -78,6 +79,9 @@ public class Aide_Activity extends Activity implements
             @Override
             public void onClick(View view) {
                 googleClient.connect();
+                Toast.makeText(Aide_Activity.this,  String.format(getString(R.string.demandedaide)), Toast.LENGTH_SHORT).show();
+                setResult(1);
+                finish();
             }
         });
 
