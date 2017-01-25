@@ -1,11 +1,14 @@
 package com.example.niels.healthcompanion;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.widget.RelativeLayout;
@@ -14,8 +17,11 @@ import android.widget.TextView;
 
 public class Pouls_Activity extends Activity implements SensorEventListener {
 
+    private long[] pattern = {0, 100, 1000, 300, 200, 100, 500, 200, 100};
+
     //UI Elements
     private RelativeLayout mRLayout;
+    private RelativeLayout mCLayout;
     private TextView mTextView;
 
     //Sensor and SensorManager
@@ -37,7 +43,7 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 //mCircledImageView = (CircledImageView) stub.findViewById(R.id.circle);
-                mRLayout  = (RelativeLayout) stub.findViewById(R.id.round_layout);
+                mRLayout  = (RelativeLayout) stub.findViewById(R.id.pouls_layout);
                 mTextView = (TextView) stub.findViewById(R.id.value);
             }
         });
@@ -76,9 +82,13 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
                 }
                 else if(pouls > 100 && pouls < 120)
                 {
+                    sendNotification("Pouls >= 100");
                     mRLayout.setBackgroundColor(getResources().getColor(R.color.orange));
                 }
-                else mRLayout.setBackgroundColor(getResources().getColor(R.color.red));
+                else
+                {
+                    mRLayout.setBackgroundColor(getResources().getColor(R.color.red));
+                }
                 mTextView.setText("" + (int) event.values[0]);
                 Log.d("SENSOR--->",""+event.values[0]);
             }
@@ -88,5 +98,21 @@ public class Pouls_Activity extends Activity implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void sendNotification(String message)
+    {
+        String toSend = message;
+        Notification notification = new NotificationCompat.Builder(getApplication())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("HealthCompanion")
+                .setContentText(toSend)
+                .setVibrate(pattern)
+                .setVisibility(0x00000001)
+                .extend(new NotificationCompat.WearableExtender().setHintShowBackgroundOnly(true))
+                .build();
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplication());
+        int notificationId = 1;
+        notificationManager.notify(notificationId, notification);
     }
 }

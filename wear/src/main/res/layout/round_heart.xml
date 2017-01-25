@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".Pouls_Activity"
     tools:deviceIds="wear_round"
-    android:id="@+id/round_layout">
+    android:id="@+id/pouls_layout">
 
 
     <TextView
         android:layout_gravity="center|center_vertical"
-        android:text="wait...."
+        android:text="@string/wait"
         android:textColor="@color/black"
-        android:textSize="100px"
+        android:textSize="80px"
         android:id="@+id/value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

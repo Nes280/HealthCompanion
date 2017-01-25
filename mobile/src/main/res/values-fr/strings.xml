@@ -11,4 +11,9 @@
     <string name="emergency_desc">Paramétrez les numéros à appeler en cas d\'urgeance.</string>
     <string name="notification_desc">Paramétrez divers rappels</string>
     <string name="settings_desc">paramétreges générale de l\'application.</string>
+    <string name="notif_send">Vous avez envoyé une notification vide.</string>
+    <string name="title_water">Rappel de boisson</string>
+    <string name="title_medication">Rappel de médicament</string>
+    <string name="content_water">Pensez à boire de l\'eau</string>
+    <string name="content_medication">Pensez à prendre vos médicament</string>
 </resources>

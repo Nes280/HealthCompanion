@@ -1,6 +1,8 @@
 package com.example.niels.healthcompanion;
 
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.util.Pair;
 import android.support.wearable.activity.WearableActivity;
@@ -15,10 +17,20 @@ public class MainWatchActivity extends WearableActivity {
     private TextView mHeader;
     private Intent mIntent;
 
+    //Sensor and SensorManager
+    Sensor mHeartRateSensor;
+    SensorManager mSensorManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_watch);
+
+
+        //Sensor and sensor manager
+        mSensorManager = ((SensorManager)getSystemService(SENSOR_SERVICE));
+        mHeartRateSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
+
 
         // Sample icons for the list
         mIcons = new ArrayList<Pair<Integer, String>>();
@@ -53,8 +65,15 @@ public class MainWatchActivity extends WearableActivity {
                             startActivity(mIntent);
                             break;
                         case 2:
-                            mIntent= new Intent(MainWatchActivity.this, Pouls_Activity.class);
-                            startActivity(mIntent);
+                            if (mHeartRateSensor != null) {
+                                mIntent = new Intent(MainWatchActivity.this, Pouls_Activity.class);
+                                startActivity(mIntent);
+                            }
+                            else {
+                                Toast.makeText(MainWatchActivity.this,
+                                        String.format(getString(R.string.unavailable_sensor)),
+                                        Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         case 3:
                             mIntent= new Intent(MainWatchActivity.this, Aide_Activity.class);
