@@ -56,6 +56,10 @@ public class MainWatchActivity extends WearableActivity {
                             mIntent= new Intent(MainWatchActivity.this, Pouls_Activity.class);
                             startActivity(mIntent);
                             break;
+                        case 3:
+                            mIntent= new Intent(MainWatchActivity.this, Aide_Activity.class);
+                            startActivity(mIntent);
+                            break;
 
                         default:
                             Toast.makeText(MainWatchActivity.this,

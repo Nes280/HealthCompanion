@@ -5,4 +5,5 @@
     <dimen name="activity_horizontal_margin_nb_pas_left">74dp</dimen>
     <dimen name="activity_horizontal_margin_pas_par_s_left">90dp</dimen>
     <dimen name="activity_horizontal_margin_bottom">300dp</dimen>
+    <dimen name="activity_horizontal_margin_aide_txt_left">40dp</dimen>
 </resources>
