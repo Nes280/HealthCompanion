@@ -16,4 +16,5 @@
     <string name="title_medication">Rappel de médicament</string>
     <string name="content_water">Pensez à boire de l\'eau</string>
     <string name="content_medication">Pensez à prendre vos médicament</string>
+    <string name="out_bounds_hours">Ce nombre ne peut dépasser 24</string>
 </resources>

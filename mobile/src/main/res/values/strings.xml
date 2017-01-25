@@ -16,4 +16,5 @@
     <string name="title_medication">Medication notification</string>
     <string name="content_water">Think to drinking</string>
     <string name="content_medication">Think to take your medication</string>
+    <string name="out_bounds_hours">This number can\'t exceed 24.</string>
 </resources>

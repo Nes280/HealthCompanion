@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class NotificationActivity extends AppCompatActivity {
@@ -64,7 +65,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         toggleButtonWater = (ToggleButton) findViewById(R.id.toggleButtonWater);
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        int water = settings.getInt("water", 0);
+        final int water = settings.getInt("water", 0);
         editIntWater = (EditText) findViewById(R.id.editTextWater);
 
         if (water > 0) {
@@ -86,8 +87,19 @@ public class NotificationActivity extends AppCompatActivity {
                     if (!editIntWater.getText().toString().equals("0") && !editIntWater.getText().toString().equals("")) {
                         //Log.e(TAG, "--->"+editIntWater.getText().toString()+"<---");
                         heure = Integer.parseInt(editIntWater.getText().toString());
-                        NotificationEventReceiverWater.setupAlarm(getApplicationContext(), heure);
-                        Log.e("---------water", "" + heure);
+                        if (heure <= 24) {
+                            Log.e(TAG, ""+heure);
+                            NotificationEventReceiverWater.setupAlarm(getApplicationContext(), heure);
+                            //Log.e("---------water", "" + heure);
+                        }
+                        else {
+                            Toast.makeText(NotificationActivity.this,
+                                    String.format(getString(R.string.out_bounds_hours)),
+                                    Toast.LENGTH_SHORT).show();
+                            isEditedWater = false;
+                            //editIntWater.setText(water);
+                            toggleButtonWater.setChecked(false);
+                        }
                     }
                     else {
                         toggleButtonWater.setChecked(false);
@@ -97,7 +109,7 @@ public class NotificationActivity extends AppCompatActivity {
                 else {
                     editIntWater.setText(0+"");
                     NotificationEventReceiverWater.getDeleteIntent(getApplicationContext());
-                    Log.e("---------water", "delete");
+                    //Log.e("---------water", "delete");
                 }
             }
         });
@@ -105,7 +117,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         toggleButtonMedication = (ToggleButton) findViewById(R.id.toggleButtonMedicament);
         SharedPreferences settings2 = getSharedPreferences(PREFS_NAME, 0);
-        int medicament = settings2.getInt("medicament", 0);
+        final int medicament = settings2.getInt("medicament", 0);
         editIntMedicament = (EditText) findViewById(R.id.editTextMedicament);
 
         if (medicament > 0) {
@@ -124,9 +136,19 @@ public class NotificationActivity extends AppCompatActivity {
                     int heure;
                     if (!editIntMedicament.getText().toString().equals("0") && !editIntMedicament.getText().toString().equals(""))
                     {
-                    heure = Integer.parseInt(editIntMedicament.getText().toString());
-                        NotificationEventReceiverWater.setupAlarm(getApplicationContext(), heure);
-                        Log.e("---------medication", "" + heure);
+                        heure = Integer.parseInt(editIntMedicament.getText().toString());
+                        if (heure <= 24) {
+                            NotificationEventReceiverWater.setupAlarm(getApplicationContext(), heure);
+                            //Log.e("---------medication", "" + heure);
+                        }
+                        else {
+                            Toast.makeText(NotificationActivity.this,
+                                    String.format(getString(R.string.out_bounds_hours)),
+                                    Toast.LENGTH_SHORT).show();
+                            isEditedWater = false;
+                            //editIntWater.setText(medicament);
+                            toggleButtonMedication.setChecked(false);
+                        }
                     }
                     else {
                         toggleButtonMedication.setChecked(false);
@@ -136,14 +158,10 @@ public class NotificationActivity extends AppCompatActivity {
                 else {
                     editIntMedicament.setText(0+"");
                     NotificationEventReceiverWater.getDeleteIntent(getApplicationContext());
-                    Log.e("---------medication", "delete");
+                    //Log.e("---------medication", "delete");
                 }
             }
         });
-    }
-    public void alert()
-    {
-
     }
     @Override
     protected void onStop(){
